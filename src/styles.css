@@ -1,6 +1,9 @@
 :root {
   --black: #252525;
+  --black-dark: #080808;
   --white: #ececec;
+  --gray: #cecece;
+  --wine: #721f1f;
 }
 
 * {
@@ -22,11 +25,48 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 50px;
+  background-color: var(--black-dark);
+}
+
+/* CONTENT */
+
+.content {
+  max-width: 200px;
+  margin: auto;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content__title {
+  text-align: center;
+}
+
+.search-player-input {
+  margin: 20px 0;
+}
+
+.search-player-btn {
+  width: 100px;
 }
 
 /* FOOTER */
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--wine);
   text-align: center;
+  padding: 15px 0;
+}
+
+.footer__link {
+  color: var(--white);
+}
+
+.footer__link:hover {
+  color: var(--gray);
 }
