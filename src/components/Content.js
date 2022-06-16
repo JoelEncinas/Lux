@@ -17,12 +17,12 @@ export default Content
 
 /* api logic */
 
-
-
 const userAction = async () => {
-    const response = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/mdb%20crackero?api_key=${API_KEY}`);
+    let inputValue = document.getElementsByClassName('search-player-input').value;
+    const response = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${inputValue}?api_key=${API_KEY}`);
     const myJson = await response.json(); //extract JSON from the http response
     // do something with myJson
     console.log(myJson);
+    // pass info to another component and display data
   }
   
