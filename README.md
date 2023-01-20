@@ -5,4 +5,6 @@ opgg clone
 - pull tweets/news of lol
 - chatgpt for lol tips
 
-React or vanilla js
+Vanilla js
+
+https://developer.riotgames.com/
