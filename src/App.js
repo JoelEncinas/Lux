@@ -1,14 +1,10 @@
-import React from "react"
-import Navbar from "./components/Navbar"
-import Content from "./components/Content"
-import Footer from "./components/Footer"
+import React from "react";
+import Content from "./components/Content";
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <Content/>
-      <Footer/>
+      <Content />
     </div>
   );
 }
