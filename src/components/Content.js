@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-// import Loading from './Loading';
 
 function Content() {
   const [inputValue, setInputValue] = useState("");
@@ -22,20 +21,18 @@ function Content() {
       });
   };
 
-  // fake loading
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (data) {
-        console.log(data);
-      }
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, [data]);
-
   return (
     <div>
-      <input type="text" value={inputValue} onChange={handleInput} />
-      <button onClick={handleSearch}>Search</button>
+      <div>
+        <input type="text" value={inputValue} onChange={handleInput} />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      {data && (
+        <div>
+          <p>name: {data.name}</p>
+          <p>summoner level: {data.summonerLevel}</p>
+        </div>
+      )}
     </div>
   );
 }
