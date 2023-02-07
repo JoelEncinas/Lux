@@ -8,6 +8,16 @@ function ChampionRotation() {
     "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champions/";
   // id.name => to get name of champion
 
+  const getChampionNames = async (freeChampionIds) => {
+    const namesArr = [];
+    for (const id of freeChampionIds) {
+      const response = await fetch(CHAMPIONS + id + ".json");
+      const data = await response.json();
+      namesArr.push(data.name);
+    }
+    return namesArr;
+  };
+
   useEffect(() => {
     // avoid react warning by moving api key inside hook
     const API_KEY = process.env.REACT_APP_API_KEY;
@@ -15,24 +25,14 @@ function ChampionRotation() {
       .get(
         `https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${API_KEY}`
       )
-      .then((res) => {
-        let namesArr = [];
-
-        res.data.freeChampionIds.forEach((id) => {
-          fetch(CHAMPIONS + id + ".json")
-            .then((response) => response.json())
-            .then((data) => namesArr.push(data.name))
-            .catch((err) => console.error(err));
-        });
-
+      .then(async (res) => {
+        const namesArr = await getChampionNames(res.data.freeChampionIds);
         setData(namesArr);
       })
       .catch((err) => {
-        console.log(err);
+        console.error("API request error: ", err);
       });
-  }, []); // empty array to avoid rerender everytime
-
-  console.log(data);
+  }, []);
 
   return (
     <div>
