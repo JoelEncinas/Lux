@@ -1,28 +1,54 @@
-import React from "react"
+import React, { useState, useEffect } from "react";
 
-const API_KEY = 'RGAPI-7819e65a-6c8e-483c-bd8f-7da17490dbe5'
-const SPACE = '%20'
+const API_KEY = process.env.REACT_APP_API_KEY;
+// const SPACE = "%20";
 
 function Content() {
-    return (
-        <main className="content">
-            <h1 className="content__title">LolFinder</h1>
-            <input className="search-player-input" type='text'></input>
-            <button className="search-player-btn" onClick={userAction}>Search</button>
-        </main>
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [summonerLevel, setSummonerLevel] = useState("");
+
+  async function getSummonerData() {
+    fetch(
+      `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/tpa%20mistake?api_key=${API_KEY}`
     )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setSummonerLevel(result.summonerLevel);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }
+
+  useEffect(() => {
+    getSummonerData();
+  }, []); // empty array means it will run once
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <main className="content">
+        <h1 className="content__title">LolFinder</h1>
+        <input className="search-player-input" type="text"></input>
+        <button className="search-player-btn" onClick={getSummonerData}>
+          Search
+        </button>
+
+        <p>{summonerLevel}</p>
+      </main>
+    );
+  }
 }
 
-export default Content
-
-/* api logic */
-
-const userAction = async () => {
-    let inputValue = document.getElementsByClassName('search-player-input').value;
-    const response = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${inputValue}?api_key=${API_KEY}`);
-    const myJson = await response.json(); //extract JSON from the http response
-    // do something with myJson
-    console.log(myJson);
-    // pass info to another component and display data
-  }
-  
+export default Content;
