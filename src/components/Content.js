@@ -6,13 +6,18 @@ function Content() {
   const [data, setData] = useState(null);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
-  const PROFILE_PIC = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/';
+  const PROFILE_PIC =
+    "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/";
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleSearch = () => {
+    // clear data
+    document.getElementById("error").style.display = "none";
+    setData(null);
+
     axios
       .get(
         `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${inputValue}?api_key=${API_KEY}`
@@ -20,6 +25,9 @@ function Content() {
       .then((res) => {
         setData(res.data);
         console.log(res.data);
+      })
+      .catch((err) => {
+        document.getElementById("error").style.display = "block";
       });
   };
 
@@ -30,12 +38,19 @@ function Content() {
         <button onClick={handleSearch}>Search</button>
       </div>
       {data && (
-        <div>
+        <div id="data">
           <p>name: {data.name}</p>
           <p>summoner level: {data.summonerLevel}</p>
-          <img src={`${PROFILE_PIC}${data.profileIconId}.jpg`} width={'50px'}></img>
+          <img
+            src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
+            width={"50px"}
+            alt={"summoner profile"}
+          ></img>
         </div>
       )}
+      <div id="error" style={{ display: "none" }}>
+        Summoner not found
+      </div>
     </div>
   );
 }
