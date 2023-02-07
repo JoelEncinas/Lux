@@ -6,6 +6,7 @@ function Content() {
   const [data, setData] = useState(null);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
+  const PROFILE_PIC = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/';
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
@@ -18,6 +19,7 @@ function Content() {
       )
       .then((res) => {
         setData(res.data);
+        console.log(res.data);
       });
   };
 
@@ -31,6 +33,7 @@ function Content() {
         <div>
           <p>name: {data.name}</p>
           <p>summoner level: {data.summonerLevel}</p>
+          <img src={`${PROFILE_PIC}${data.profileIconId}.jpg`} width={'50px'}></img>
         </div>
       )}
     </div>
