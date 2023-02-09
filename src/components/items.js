@@ -1,5 +1,4 @@
-let items = [
-  "096_eye_of_the_observer",
+export const items = [
   "1001_class_t1_bootsofspeed",
   "1004_class_t1_faeriecharm",
   "1006_tank_t1_rejuvenationbead",
@@ -226,10 +225,5 @@ let items = [
   "6695_assassin_t3_serpentsfang",
   "6696_axiomarc",
   "8001_tank_t3_anathemaschains",
-  "8020_tank_t3_abyssalmask",
-  "fiddlestickstrinket1",
-  "gp_ui_placeholder",
-  "pykegold",
-  "teleporthome",
-  "teleporthomedisabled",
+  "8020_tank_t3_abyssalmask"
 ];

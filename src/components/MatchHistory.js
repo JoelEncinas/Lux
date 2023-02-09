@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { items } from "./items";
 
 function MatchHistory({ puuid }) {
   const [matches, setMatches] = useState([]);
@@ -6,6 +7,18 @@ function MatchHistory({ puuid }) {
   const [loading, setLoading] = useState(true);
   const [mostFreq, setMostFreq] = useState(null);
   const [wrTen, setWrTen] = useState(null);
+
+  const createItemsList = () => {
+    const tempMap = {};
+    for (const item of items) {
+      const parts = item.split("_");
+      tempMap[parts[0]] = item;
+    }
+
+    console.log(tempMap);
+  };
+
+  console.log(createItemsList());
 
   useEffect(() => {
     if (puuid) {
@@ -159,7 +172,7 @@ function MatchHistory({ puuid }) {
           }
         }
 
-        setWrTen({win: trueCount, lose: falseCount})
+        setWrTen({ win: trueCount, lose: falseCount });
 
         console.log(
           data[0].info.participants[position1].championName +
@@ -273,7 +286,12 @@ function MatchHistory({ puuid }) {
         <p>
           Most used champion: <strong>{mostFreq}</strong>
         </p>
-        <p>{wrTen && `W${wrTen.win} L${wrTen.lose} WinRate ` + parseInt((wrTen.win / (wrTen.lose + wrTen.win)) * 100) + '%'}</p>
+        <p>
+          {wrTen &&
+            `W${wrTen.win} L${wrTen.lose} WinRate ` +
+              parseInt((wrTen.win / (wrTen.lose + wrTen.win)) * 100) +
+              "%"}
+        </p>
       </div>
       <ul>
         {matchHistory.map((match) => (
