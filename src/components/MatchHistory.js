@@ -5,6 +5,7 @@ function MatchHistory({ puuid }) {
   const [matchHistory, setMatchHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [mostFreq, setMostFreq] = useState(null);
+  const [wrTen, setWrTen] = useState(null);
 
   useEffect(() => {
     if (puuid) {
@@ -135,6 +136,31 @@ function MatchHistory({ puuid }) {
 
         setMostFreq(findMostFrequentString(champArr));
 
+        let wrArr = [];
+        wrArr.push(data[0].info.participants[position1].win);
+        wrArr.push(data[1].info.participants[position2].win);
+        wrArr.push(data[2].info.participants[position3].win);
+        wrArr.push(data[3].info.participants[position4].win);
+        wrArr.push(data[4].info.participants[position5].win);
+        wrArr.push(data[5].info.participants[position6].win);
+        wrArr.push(data[6].info.participants[position7].win);
+        wrArr.push(data[7].info.participants[position8].win);
+        wrArr.push(data[8].info.participants[position9].win);
+        wrArr.push(data[9].info.participants[position10].win);
+
+        let trueCount = 0;
+        let falseCount = 0;
+
+        for (let i = 0; i < wrArr.length; i++) {
+          if (wrArr[i] === true) {
+            trueCount++;
+          } else {
+            falseCount++;
+          }
+        }
+
+        setWrTen({win: trueCount, lose: falseCount})
+
         console.log(
           data[0].info.participants[position1].championName +
             " " +
@@ -244,7 +270,10 @@ function MatchHistory({ puuid }) {
     <div id="match-history">
       <div id="last-ten">
         <p>Last 10 matches</p>
-        <p>Most used champion: <strong>{mostFreq}</strong></p>
+        <p>
+          Most used champion: <strong>{mostFreq}</strong>
+        </p>
+        <p>{wrTen && `W${wrTen.win} L${wrTen.lose} WinRate ` + parseInt((wrTen.win / (wrTen.lose + wrTen.win)) * 100) + '%'}</p>
       </div>
       <ul>
         {matchHistory.map((match) => (
