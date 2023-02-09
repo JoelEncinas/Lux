@@ -7,6 +7,7 @@ function MatchHistory({ puuid }) {
   const [loading, setLoading] = useState(true);
   const [mostFreq, setMostFreq] = useState(null);
   const [wrTen, setWrTen] = useState(null);
+  const [itemsList, setItemsList] = useState(null);
 
   const createItemsList = () => {
     const tempMap = {};
@@ -17,6 +18,8 @@ function MatchHistory({ puuid }) {
 
     // console.log(tempMap);
   };
+
+  setItemsList(createItemsList());
 
   useEffect(() => {
     if (puuid) {
@@ -366,6 +369,11 @@ function MatchHistory({ puuid }) {
     }
   }, [puuid]);
 
+  // items
+  if(matchHistory.length !== 0){
+    console.log(itemsList.find((i) => i.id === matchHistory.items[0]));
+  }
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -394,7 +402,7 @@ function MatchHistory({ puuid }) {
             <p>Champion played: {match.champion}</p>
             <p>
               {match.items.map((item, index) => (
-                <small key={index}>{item}</small>
+                <img key={index} width={"30px"} alt={"item"}></img>
               ))}
             </p>
             <p>{match.gameDuration}</p>
