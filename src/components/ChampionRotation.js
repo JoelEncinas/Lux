@@ -68,7 +68,7 @@ function ChampionRotation() {
             .filter((champion) => !filter || champion.damageType === filter)
             .map((champion) => (
               <a key={champion.name}
-                href={CHAMPION_INFO + champion.name}
+                href={CHAMPION_INFO + champion.name.replace(/[\s']+/g, '-')}
                 target={"_blank"}
                 rel={"noreferrer"}
               >
