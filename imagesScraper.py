@@ -25,6 +25,3 @@ for url in urls:
             f.write(response.content)
     else:
         print("Failed to download image. HTTP status code:", response.status_code)
-
-
-exec(open('file.py').read())
