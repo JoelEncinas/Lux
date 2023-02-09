@@ -39,7 +39,14 @@ function MatchHistory({ puuid }) {
 
         console.log(position);
 
+        console.log(
+          data[0].info.participants[position].championName +
+            " " +
+            data[0].info.participants[position].win
+        );
+
         setMatches(data);
+        setMatchHistory([{id: 1, champion: data[0].info.participants[position].championName, win: data[0].info.participants[position].win}])
       }
 
       // get array witch matches
@@ -54,16 +61,14 @@ function MatchHistory({ puuid }) {
   if (loading) {
     return <div>Loading...</div>;
   }
-  return <ul></ul>;
-}
-
-/*
-      {matches.map((match) => (
-        <li key={match.gameId}>
-          <p>Champion played: {match.participants[0].championId}</p>
-          <p>Result: {match.participants[0].stats.win ? "Win" : "Lose"}</p>
+  return <ul>
+    {matchHistory.map((match) => (
+        <li key={match.id}>
+          <p>Champion played: {match.champion}</p>
+          <p style={{color: match.win ? 'green': 'red'}}>Result: {match.win ? "Win" : "Lose"}</p>
         </li>
       ))}
-*/
+  </ul>;
+}
 
 export default MatchHistory;
