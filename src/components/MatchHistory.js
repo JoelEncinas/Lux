@@ -28,25 +28,44 @@ function MatchHistory({ puuid }) {
         console.log(data);
         const part = data[0].metadata.participants;
 
-        let position = null;
+        let position1 = null;
+        let position2 = null;
 
         for (let i = 0; i < data[0].metadata.participants.length; i++) {
           if (puuid === data[0].metadata.participants[i]) {
-            position = i;
+            position1 = i;
             break;
           }
         }
 
-        console.log(position);
+        for (let i = 0; i < data[1].metadata.participants.length; i++) {
+          if (puuid === data[1].metadata.participants[i]) {
+            position2 = i;
+            break;
+          }
+        }
+
+        console.log(position1);
 
         console.log(
-          data[0].info.participants[position].championName +
+          data[0].info.participants[position1].championName +
             " " +
-            data[0].info.participants[position].win
+            data[0].info.participants[position1].win
         );
 
         setMatches(data);
-        setMatchHistory([{id: 1, champion: data[0].info.participants[position].championName, win: data[0].info.participants[position].win}])
+        setMatchHistory([
+          {
+            id: 0,
+            champion: data[0].info.participants[position1].championName,
+            win: data[0].info.participants[position1].win,
+          },
+          {
+            id: 1,
+            champion: data[1].info.participants[position2].championName,
+            win: data[1].info.participants[position2].win,
+          },
+        ]);
       }
 
       // get array witch matches
@@ -61,14 +80,18 @@ function MatchHistory({ puuid }) {
   if (loading) {
     return <div>Loading...</div>;
   }
-  return <ul>
-    {matchHistory.map((match) => (
+  return (
+    <ul>
+      {matchHistory.map((match) => (
         <li key={match.id}>
           <p>Champion played: {match.champion}</p>
-          <p style={{color: match.win ? 'green': 'red'}}>Result: {match.win ? "Win" : "Lose"}</p>
+          <p style={{ color: match.win ? "green" : "red" }}>
+            Result: {match.win ? "Win" : "Lose"}
+          </p>
         </li>
       ))}
-  </ul>;
+    </ul>
+  );
 }
 
 export default MatchHistory;
