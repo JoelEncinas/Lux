@@ -2,6 +2,15 @@ ul {
     padding-inline-start: 0;
 }
 
+#data {
+    background-color: bisque;
+    font-family: 'Crimson Text', serif !important;
+}
+
+#match-history {
+    font-family: 'Cimson Text', serif !important;
+}
+
 .player-rank {
     width: 50px;
 }

@@ -218,14 +218,14 @@ function MatchHistory({ puuid }) {
     return <div>Loading...</div>;
   }
   return (
-    <div>
+    <div id="match-history">
       <ul>
         {matchHistory.map((match) => (
-          <li className="match" key={match.id}>
+          <li style={{backgroundColor : match.win ? '#E0F2F1':'#FFCDD2'}} key={match.id}>
             <p>Champion played: {match.champion}</p>
             <p>{match.gameDuration}</p>
             <small>{match.date}</small>
-            <p style={{ color: match.win ? "green" : "red" }}>
+            <p>
               Result: {match.win ? "Win" : "Lose"}
             </p>
           </li>
