@@ -4,6 +4,7 @@ function MatchHistory({ puuid }) {
   const [matches, setMatches] = useState([]);
   const [matchHistory, setMatchHistory] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [mostFreq, setMostFreq] = useState(null);
 
   useEffect(() => {
     if (puuid) {
@@ -35,11 +36,6 @@ function MatchHistory({ puuid }) {
         let position8 = null;
         let position9 = null;
         let position10 = null;
-        let position11 = null;
-        let position12 = null;
-        let position13 = null;
-        let position14 = null;
-        let position15 = null;
 
         for (let i = 0; i < data[0].metadata.participants.length; i++) {
           if (puuid === data[0].metadata.participants[i]) {
@@ -111,6 +107,33 @@ function MatchHistory({ puuid }) {
           }
         }
 
+        let champArr = [];
+        champArr.push(data[0].info.participants[position1].championName);
+        champArr.push(data[1].info.participants[position2].championName);
+        champArr.push(data[2].info.participants[position3].championName);
+        champArr.push(data[3].info.participants[position4].championName);
+        champArr.push(data[4].info.participants[position5].championName);
+        champArr.push(data[5].info.participants[position6].championName);
+        champArr.push(data[6].info.participants[position7].championName);
+        champArr.push(data[7].info.participants[position8].championName);
+        champArr.push(data[8].info.participants[position9].championName);
+        champArr.push(data[9].info.participants[position10].championName);
+
+        function findMostFrequentString(arr) {
+          let frequency = {};
+          let maxCount = 0;
+          let mostFrequent;
+          for (let str of arr) {
+            frequency[str] = frequency[str] ? frequency[str] + 1 : 1;
+            if (frequency[str] > maxCount) {
+              maxCount = frequency[str];
+              mostFrequent = str;
+            }
+          }
+          return mostFrequent;
+        }
+
+        setMostFreq(findMostFrequentString(champArr));
 
         console.log(
           data[0].info.participants[position1].championName +
@@ -148,57 +171,57 @@ function MatchHistory({ puuid }) {
           },
           {
             id: 2,
-            champion: data[2].info.participants[position2].championName,
-            win: data[2].info.participants[position2].win,
+            champion: data[2].info.participants[position3].championName,
+            win: data[2].info.participants[position3].win,
             date: formatDate(data[2].info.gameCreation),
             gameDuration: formatDuration(data[2].info.gameDuration),
           },
           {
             id: 3,
-            champion: data[3].info.participants[position2].championName,
-            win: data[3].info.participants[position2].win,
+            champion: data[3].info.participants[position4].championName,
+            win: data[3].info.participants[position4].win,
             date: formatDate(data[3].info.gameCreation),
             gameDuration: formatDuration(data[3].info.gameDuration),
           },
           {
             id: 4,
-            champion: data[4].info.participants[position2].championName,
-            win: data[4].info.participants[position2].win,
+            champion: data[4].info.participants[position5].championName,
+            win: data[4].info.participants[position5].win,
             date: formatDate(data[4].info.gameCreation),
             gameDuration: formatDuration(data[4].info.gameDuration),
           },
           {
             id: 5,
-            champion: data[5].info.participants[position2].championName,
-            win: data[5].info.participants[position2].win,
+            champion: data[5].info.participants[position6].championName,
+            win: data[5].info.participants[position6].win,
             date: formatDate(data[5].info.gameCreation),
             gameDuration: formatDuration(data[5].info.gameDuration),
           },
           {
             id: 6,
-            champion: data[6].info.participants[position2].championName,
-            win: data[6].info.participants[position2].win,
+            champion: data[6].info.participants[position7].championName,
+            win: data[6].info.participants[position7].win,
             date: formatDate(data[6].info.gameCreation),
             gameDuration: formatDuration(data[6].info.gameDuration),
           },
           {
             id: 7,
-            champion: data[7].info.participants[position2].championName,
-            win: data[7].info.participants[position2].win,
+            champion: data[7].info.participants[position8].championName,
+            win: data[7].info.participants[position8].win,
             date: formatDate(data[7].info.gameCreation),
             gameDuration: formatDuration(data[7].info.gameDuration),
           },
           {
             id: 8,
-            champion: data[8].info.participants[position2].championName,
-            win: data[8].info.participants[position2].win,
+            champion: data[8].info.participants[position9].championName,
+            win: data[8].info.participants[position9].win,
             date: formatDate(data[8].info.gameCreation),
             gameDuration: formatDuration(data[8].info.gameDuration),
           },
           {
             id: 9,
-            champion: data[9].info.participants[position2].championName,
-            win: data[9].info.participants[position2].win,
+            champion: data[9].info.participants[position10].championName,
+            win: data[9].info.participants[position10].win,
             date: formatDate(data[9].info.gameCreation),
             gameDuration: formatDuration(data[9].info.gameDuration),
           },
@@ -219,15 +242,20 @@ function MatchHistory({ puuid }) {
   }
   return (
     <div id="match-history">
+      <div id="last-ten">
+        <p>Last 10 matches</p>
+        <p>Most used champion: <strong>{mostFreq}</strong></p>
+      </div>
       <ul>
         {matchHistory.map((match) => (
-          <li style={{backgroundColor : match.win ? '#E0F2F1':'#FFCDD2'}} key={match.id}>
+          <li
+            style={{ backgroundColor: match.win ? "#E0F2F1" : "#FFCDD2" }}
+            key={match.id}
+          >
             <p>Champion played: {match.champion}</p>
             <p>{match.gameDuration}</p>
             <small>{match.date}</small>
-            <p>
-              Result: {match.win ? "Win" : "Lose"}
-            </p>
+            <p>Result: {match.win ? "Win" : "Lose"}</p>
           </li>
         ))}
       </ul>{" "}

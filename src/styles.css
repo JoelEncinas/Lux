@@ -8,7 +8,11 @@ ul {
 }
 
 #match-history {
-    font-family: 'Cimson Text', serif !important;
+    font-family: 'Crimson Text', serif !important;
+}
+
+#last-ten {
+    background-color: #e4e4e4;
 }
 
 .player-rank {
