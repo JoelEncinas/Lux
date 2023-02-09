@@ -20,7 +20,7 @@ function ChampionRotation() {
     for (const id of freeChampionIds) {
       const response = await fetch(CHAMPIONS + id + ".json");
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       championData.push({
         id: id,
         name: data.name,
@@ -55,10 +55,10 @@ function ChampionRotation() {
     <div>
       <h3>Free weekly rotation</h3>
       <div>
-        <button onClick={() => handleFilter(null)}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/096_eye_of_the_observer.png"} width={'20px'}></img> All</button>
-        <button onClick={() => handleFilter("kPhysical")}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/3071_fighter_t3_blackcleaver.png"} width={'20px'}></img> Physical</button>
-        <button onClick={() => handleFilter("kMagic")}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/3089_mage_t3_deathcap.png"} width={'20px'}></img> Magical</button>
-        <button onClick={() => handleFilter("kMixed")}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/3100_mage_t3_lichbane.png"} width={'20px'}></img> Mixed</button>
+        <button onClick={() => handleFilter(null)}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/096_eye_of_the_observer.png"} width={'20px'} alt={'all damage'}></img> All</button>
+        <button onClick={() => handleFilter("kPhysical")}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/3071_fighter_t3_blackcleaver.png"} width={'20px'} alt={'physical damage'}></img> Physical</button>
+        <button onClick={() => handleFilter("kMagic")}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/3089_mage_t3_deathcap.png"} width={'20px'} alt={'magic damage'}></img> Magical</button>
+        <button onClick={() => handleFilter("kMixed")}><img src={"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/3100_mage_t3_lichbane.png"} width={'20px'} alt={'mixed damage'}></img> Mixed</button>
       </div>
       {championData === null ? (
         <p>Loading...</p>
@@ -67,7 +67,7 @@ function ChampionRotation() {
           {championData
             .filter((champion) => !filter || champion.damageType === filter)
             .map((champion) => (
-              <a
+              <a key={champion.name}
                 href={CHAMPION_INFO + champion.name}
                 target={"_blank"}
                 rel={"noreferrer"}

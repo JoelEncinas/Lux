@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import MatchHistory from "./MatchHistory";
 
 function Content() {
   const [inputValue, setInputValue] = useState("");
   const [data, setData] = useState(null);
+  const [puuid, setPuuid] = useState(null);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   const PROFILE_PIC =
@@ -17,6 +19,7 @@ function Content() {
     // clear data
     document.getElementById("error").style.display = "none";
     setData(null);
+    setPuuid(null);
 
     axios
       .get(
@@ -24,10 +27,12 @@ function Content() {
       )
       .then((res) => {
         setData(res.data);
+        setPuuid(res.data.puuid);
         console.log(res.data);
       })
       .catch((err) => {
         document.getElementById("error").style.display = "block";
+        console.log(err);
       });
   };
 
@@ -51,6 +56,7 @@ function Content() {
       <div id="error" style={{ display: "none" }}>
         Summoner not found
       </div>
+      <div>{puuid && <MatchHistory puuid={puuid} />}</div>
     </div>
   );
 }
