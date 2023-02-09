@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { CHALLENGER_ICON } from './assets';
+import { GRANDMASTER_ICON } from './assets';
+import { MASTER_ICON } from './assets';
+import { DIAMOND_ICON } from './assets';
+import { PLATINUM_ICON } from './assets';
+import { GOLD_ICON } from './assets';
+import { SILVER_ICON } from './assets';
+import { BRONZE_ICON } from './assets';
+import { IRON_ICON } from './assets';
 
 function MatchHistory({ puuid }) {
   const [matches, setMatches] = useState([]);
@@ -81,16 +90,19 @@ function MatchHistory({ puuid }) {
     return <div>Loading...</div>;
   }
   return (
-    <ul>
-      {matchHistory.map((match) => (
-        <li key={match.id}>
-          <p>Champion played: {match.champion}</p>
-          <p style={{ color: match.win ? "green" : "red" }}>
-            Result: {match.win ? "Win" : "Lose"}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <img className="player-rank" src={CHALLENGER_ICON} alt={'rank of the player'}></img>
+      <ul>
+        {matchHistory.map((match) => (
+          <li key={match.id}>
+            <p>Champion played: {match.champion}</p>
+            <p style={{ color: match.win ? "green" : "red" }}>
+              Result: {match.win ? "Win" : "Lose"}
+            </p>
+          </li>
+        ))}
+      </ul>{" "}
+    </div>
   );
 }
 
