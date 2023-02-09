@@ -15,10 +15,8 @@ function MatchHistory({ puuid }) {
       tempMap[parts[0]] = item;
     }
 
-    console.log(tempMap);
+    // console.log(tempMap);
   };
-
-  console.log(createItemsList());
 
   useEffect(() => {
     if (puuid) {
@@ -39,6 +37,8 @@ function MatchHistory({ puuid }) {
           );
 
         const data = await Promise.all(promises);
+
+        createItemsList();
 
         let position1 = null;
         let position2 = null;
@@ -200,6 +200,15 @@ function MatchHistory({ puuid }) {
             win: data[0].info.participants[position1].win,
             date: formatDate(data[0].info.gameCreation),
             gameDuration: formatDuration(data[0].info.gameDuration),
+            items: [
+              data[0].info.participants[position1].item0,
+              data[0].info.participants[position1].item1,
+              data[0].info.participants[position1].item2,
+              data[0].info.participants[position1].item3,
+              data[0].info.participants[position1].item4,
+              data[0].info.participants[position1].item5,
+              data[0].info.participants[position1].item6,
+            ],
           },
           {
             id: 1,
@@ -207,6 +216,15 @@ function MatchHistory({ puuid }) {
             win: data[1].info.participants[position2].win,
             date: formatDate(data[1].info.gameCreation),
             gameDuration: formatDuration(data[1].info.gameDuration),
+            items: [
+              data[1].info.participants[position2].item0,
+              data[1].info.participants[position2].item1,
+              data[1].info.participants[position2].item2,
+              data[1].info.participants[position2].item3,
+              data[1].info.participants[position2].item4,
+              data[1].info.participants[position2].item5,
+              data[1].info.participants[position2].item6,
+            ],
           },
           {
             id: 2,
@@ -214,6 +232,15 @@ function MatchHistory({ puuid }) {
             win: data[2].info.participants[position3].win,
             date: formatDate(data[2].info.gameCreation),
             gameDuration: formatDuration(data[2].info.gameDuration),
+            items: [
+              data[2].info.participants[position3].item0,
+              data[2].info.participants[position3].item1,
+              data[2].info.participants[position3].item2,
+              data[2].info.participants[position3].item3,
+              data[2].info.participants[position3].item4,
+              data[2].info.participants[position3].item5,
+              data[2].info.participants[position3].item6,
+            ],
           },
           {
             id: 3,
@@ -221,6 +248,15 @@ function MatchHistory({ puuid }) {
             win: data[3].info.participants[position4].win,
             date: formatDate(data[3].info.gameCreation),
             gameDuration: formatDuration(data[3].info.gameDuration),
+            items: [
+              data[3].info.participants[position4].item0,
+              data[3].info.participants[position4].item1,
+              data[3].info.participants[position4].item2,
+              data[3].info.participants[position4].item3,
+              data[3].info.participants[position4].item4,
+              data[3].info.participants[position4].item5,
+              data[3].info.participants[position4].item6,
+            ],
           },
           {
             id: 4,
@@ -228,6 +264,15 @@ function MatchHistory({ puuid }) {
             win: data[4].info.participants[position5].win,
             date: formatDate(data[4].info.gameCreation),
             gameDuration: formatDuration(data[4].info.gameDuration),
+            items: [
+              data[4].info.participants[position5].item0,
+              data[4].info.participants[position5].item1,
+              data[4].info.participants[position5].item2,
+              data[4].info.participants[position5].item3,
+              data[4].info.participants[position5].item4,
+              data[4].info.participants[position5].item5,
+              data[4].info.participants[position5].item6,
+            ],
           },
           {
             id: 5,
@@ -235,6 +280,15 @@ function MatchHistory({ puuid }) {
             win: data[5].info.participants[position6].win,
             date: formatDate(data[5].info.gameCreation),
             gameDuration: formatDuration(data[5].info.gameDuration),
+            items: [
+              data[5].info.participants[position6].item0,
+              data[5].info.participants[position6].item1,
+              data[5].info.participants[position6].item2,
+              data[5].info.participants[position6].item3,
+              data[5].info.participants[position6].item4,
+              data[5].info.participants[position6].item5,
+              data[5].info.participants[position6].item6,
+            ],
           },
           {
             id: 6,
@@ -242,6 +296,15 @@ function MatchHistory({ puuid }) {
             win: data[6].info.participants[position7].win,
             date: formatDate(data[6].info.gameCreation),
             gameDuration: formatDuration(data[6].info.gameDuration),
+            items: [
+              data[6].info.participants[position7].item0,
+              data[6].info.participants[position7].item1,
+              data[6].info.participants[position7].item2,
+              data[6].info.participants[position7].item3,
+              data[6].info.participants[position7].item4,
+              data[6].info.participants[position7].item5,
+              data[6].info.participants[position7].item6,
+            ],
           },
           {
             id: 7,
@@ -249,6 +312,15 @@ function MatchHistory({ puuid }) {
             win: data[7].info.participants[position8].win,
             date: formatDate(data[7].info.gameCreation),
             gameDuration: formatDuration(data[7].info.gameDuration),
+            items: [
+              data[7].info.participants[position8].item0,
+              data[7].info.participants[position8].item1,
+              data[7].info.participants[position8].item2,
+              data[7].info.participants[position8].item3,
+              data[7].info.participants[position8].item4,
+              data[7].info.participants[position8].item5,
+              data[7].info.participants[position8].item6,
+            ],
           },
           {
             id: 8,
@@ -256,6 +328,15 @@ function MatchHistory({ puuid }) {
             win: data[8].info.participants[position9].win,
             date: formatDate(data[8].info.gameCreation),
             gameDuration: formatDuration(data[8].info.gameDuration),
+            items: [
+              data[8].info.participants[position9].item0,
+              data[8].info.participants[position9].item1,
+              data[8].info.participants[position9].item2,
+              data[8].info.participants[position9].item3,
+              data[8].info.participants[position9].item4,
+              data[8].info.participants[position9].item5,
+              data[8].info.participants[position9].item6,
+            ],
           },
           {
             id: 9,
@@ -263,6 +344,15 @@ function MatchHistory({ puuid }) {
             win: data[9].info.participants[position10].win,
             date: formatDate(data[9].info.gameCreation),
             gameDuration: formatDuration(data[9].info.gameDuration),
+            items: [
+              data[9].info.participants[position10].item0,
+              data[9].info.participants[position10].item1,
+              data[9].info.participants[position10].item2,
+              data[9].info.participants[position10].item3,
+              data[9].info.participants[position10].item4,
+              data[9].info.participants[position10].item5,
+              data[9].info.participants[position10].item6,
+            ],
           },
         ]);
       }
@@ -281,18 +371,20 @@ function MatchHistory({ puuid }) {
   }
   return (
     <div id="match-history">
-      <div id="last-ten">
-        <p>Last 10 matches</p>
-        <p>
-          Most used champion: <strong>{mostFreq}</strong>
-        </p>
-        <p>
-          {wrTen &&
-            `W${wrTen.win} L${wrTen.lose} WinRate ` +
-              parseInt((wrTen.win / (wrTen.lose + wrTen.win)) * 100) +
-              "%"}
-        </p>
-      </div>
+      {wrTen && (
+        <div id="last-ten">
+          <p>Last 10 matches</p>
+          <p>
+            Most used champion: <strong>{mostFreq}</strong>
+          </p>
+          <p>
+            {wrTen &&
+              `W${wrTen.win} L${wrTen.lose} WinRate ` +
+                parseInt((wrTen.win / (wrTen.lose + wrTen.win)) * 100) +
+                "%"}
+          </p>
+        </div>
+      )}
       <ul>
         {matchHistory.map((match) => (
           <li
@@ -300,6 +392,11 @@ function MatchHistory({ puuid }) {
             key={match.id}
           >
             <p>Champion played: {match.champion}</p>
+            <p>
+              {match.items.map((item, index) => (
+                <small key={index}>{item}</small>
+              ))}
+            </p>
             <p>{match.gameDuration}</p>
             <small>{match.date}</small>
             <p>Result: {match.win ? "Win" : "Lose"}</p>
