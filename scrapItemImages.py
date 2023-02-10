@@ -1,6 +1,5 @@
 import os
 import requests
-from bs4 import BeautifulSoup
 
 items = [
   "1001_class_t1_bootsofspeed",
@@ -232,8 +231,24 @@ items = [
   "8020_tank_t3_abyssalmask"
 ]
 
+base_url = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/items/icons2d/'
 
+folder_path = "./images"
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
+
+# Loop over the list of items
 for item in items:
-  print(item)
+    # Construct the complete URL for the image
+    image_url = base_url + item + ".png"
+
+    # Make an HTTP request to retrieve the image content
+    response = requests.get(image_url)
+    image_content = response.content
+
+    # Save the image in the folder
+    image_path = os.path.join(folder_path, item + ".png")
+    with open(image_path, "wb") as f:
+        f.write(image_content)
 
 
