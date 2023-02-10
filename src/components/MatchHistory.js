@@ -382,7 +382,12 @@ function MatchHistory({ puuid }) {
           >
             <p>Champion played: {match.champion}</p>
             {match.items.map((item, index) => (
-              <p key={index}>{item}</p>
+              <img
+                className="item-image"
+                src={`./images/${item}.png`}
+                alt={"item"}
+                width={"20px"}
+              ></img>
             ))}
             <p>{match.gameDuration}</p>
             <small>{match.date}</small>
