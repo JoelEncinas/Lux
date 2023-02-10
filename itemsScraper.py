@@ -12,4 +12,5 @@ for link in soup.find_all("a"):
     if item and item.endswith(".png"):
         items.append(item[:-4])
 
-print(items)
+for item in items:
+    print(item)
