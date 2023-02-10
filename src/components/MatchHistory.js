@@ -9,18 +9,6 @@ function MatchHistory({ puuid }) {
   const [wrTen, setWrTen] = useState(null);
   const [itemsList, setItemsList] = useState(null);
 
-  const createItemsList = () => {
-    const tempMap = {};
-    for (const item of items) {
-      const parts = item.split("_");
-      tempMap[parts[0]] = item;
-    }
-
-    // console.log(tempMap);
-  };
-
-  setItemsList(createItemsList());
-
   useEffect(() => {
     if (puuid) {
       setLoading(true);
@@ -40,8 +28,6 @@ function MatchHistory({ puuid }) {
           );
 
         const data = await Promise.all(promises);
-
-        createItemsList();
 
         let position1 = null;
         let position2 = null;
@@ -369,11 +355,6 @@ function MatchHistory({ puuid }) {
     }
   }, [puuid]);
 
-  // items
-  if(matchHistory.length !== 0){
-    console.log(itemsList.find((i) => i.id === matchHistory.items[0]));
-  }
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -400,17 +381,15 @@ function MatchHistory({ puuid }) {
             key={match.id}
           >
             <p>Champion played: {match.champion}</p>
-            <p>
-              {match.items.map((item, index) => (
-                <img key={index} width={"30px"} alt={"item"}></img>
-              ))}
-            </p>
+            {match.items.map((item, index) => (
+              <p key={index}>{item}</p>
+            ))}
             <p>{match.gameDuration}</p>
             <small>{match.date}</small>
             <p>Result: {match.win ? "Win" : "Lose"}</p>
           </li>
         ))}
-      </ul>{" "}
+      </ul>
     </div>
   );
 }
