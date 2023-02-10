@@ -246,8 +246,11 @@ for item in items:
     response = requests.get(image_url)
     image_content = response.content
 
+    # Create the new name for the image
+    new_name = item[:4] + ".png"
+
     # Save the image in the folder
-    image_path = os.path.join(folder_path, item + ".png")
+    image_path = os.path.join(folder_path, new_name)
     with open(image_path, "wb") as f:
         f.write(image_content)
 
