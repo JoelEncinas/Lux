@@ -12,3 +12,5 @@ https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations
 
 ### search for summoner by name 
 https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TPA%20MiSTakE
+
+Free champion rotation on another page
