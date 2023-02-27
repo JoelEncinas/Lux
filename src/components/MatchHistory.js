@@ -163,12 +163,6 @@ function MatchHistory({ puuid }) {
 
         setWrTen({ win: trueCount, lose: falseCount });
 
-        console.log(
-          data[0].info.participants[position1].championName +
-            " " +
-            data[0].info.participants[position1].win
-        );
-
         function formatDate(ndate) {
           const date = new Date(ndate);
           const options = { day: "2-digit", month: "2-digit", year: "numeric" };
@@ -185,7 +179,9 @@ function MatchHistory({ puuid }) {
         setMatchHistory([
           {
             id: 0,
+            championId: data[0].info.participants[position1].championId,
             champion: data[0].info.participants[position1].championName,
+            level: data[0].info.participants[position1].champLevel,
             win: data[0].info.participants[position1].win,
             date: formatDate(data[0].info.gameCreation),
             gameDuration: formatDuration(data[0].info.gameDuration),
@@ -198,22 +194,58 @@ function MatchHistory({ puuid }) {
               data[0].info.participants[position1].item5,
               data[0].info.participants[position1].item6,
             ],
+            primaryPerk:
+              data[0].info.participants[position1].perks.styles[0].selections
+                .perk,
+            secondaryPerk:
+              data[0].info.participants[position1].perks.styles[1].style,
+            summoner1Id: data[0].info.participants[position1].summoner1Id,
+            summoner2Id: data[0].info.participants[position1].summoner2Id,
+            gold: data[0].info.participants[position1].goldEarned,
+            kda: data[0].info.participants[position1].challenges.kda,
+            kills: data[0].info.participants[position1].kills,
+            deaths: data[0].info.participants[position1].deaths,
+            assists: data[0].info.participants[position1].assists,
+            totalDamageDealtToChampions:
+              data[0].info.participants[position1].totalDamageDealtToChampions,
+            largestMultiKill:
+              data[0].info.participants[position1].largestMultiKill,
+            visionScore: data[0].info.participants[position1].visionScore,
           },
           {
             id: 1,
-            champion: data[1].info.participants[position2].championName,
-            win: data[1].info.participants[position2].win,
+            championId: data[1].info.participants[position1].championId,
+            champion: data[1].info.participants[position1].championName,
+            level: data[1].info.participants[position1].champLevel,
+            win: data[1].info.participants[position1].win,
             date: formatDate(data[1].info.gameCreation),
             gameDuration: formatDuration(data[1].info.gameDuration),
             items: [
-              data[1].info.participants[position2].item0,
-              data[1].info.participants[position2].item1,
-              data[1].info.participants[position2].item2,
-              data[1].info.participants[position2].item3,
-              data[1].info.participants[position2].item4,
-              data[1].info.participants[position2].item5,
-              data[1].info.participants[position2].item6,
+              data[1].info.participants[position1].item0,
+              data[1].info.participants[position1].item1,
+              data[1].info.participants[position1].item2,
+              data[1].info.participants[position1].item3,
+              data[1].info.participants[position1].item4,
+              data[1].info.participants[position1].item5,
+              data[1].info.participants[position1].item6,
             ],
+            primaryPerk:
+              data[1].info.participants[position1].perks.styles[0].selections
+                .perk,
+            secondaryPerk:
+              data[1].info.participants[position1].perks.styles[1].style,
+            summoner1Id: data[1].info.participants[position1].summoner1Id,
+            summoner2Id: data[1].info.participants[position1].summoner2Id,
+            gold: data[1].info.participants[position1].goldEarned,
+            kda: data[1].info.participants[position1].challenges.kda,
+            kills: data[1].info.participants[position1].kills,
+            deaths: data[1].info.participants[position1].deaths,
+            assists: data[1].info.participants[position1].assists,
+            totalDamageDealtToChampions:
+              data[1].info.participants[position1].totalDamageDealtToChampions,
+            largestMultiKill:
+              data[1].info.participants[position1].largestMultiKill,
+            visionScore: data[1].info.participants[position1].visionScore,
           },
           {
             id: 2,
@@ -381,15 +413,17 @@ function MatchHistory({ puuid }) {
             key={match.id}
           >
             <p>Champion played: {match.champion}</p>
+            <p>KDA: {match.kda}</p>
             {match.items.map((item, index) => (
               <img
+                key={index}
                 className="item-image"
                 src={`./images/items/${item}.png`}
                 alt={"item"}
                 width={"20px"}
                 onError={(e) => {
-                  e.target.onerror = null; 
-                  e.target.src = "./images/items/1103.png"; 
+                  e.target.onerror = null;
+                  e.target.src = "./images/items/1103.png";
                 }}
               ></img>
             ))}

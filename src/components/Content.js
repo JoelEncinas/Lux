@@ -41,15 +41,12 @@ function Content() {
       .then((res) => {
         setData(res.data);
         setPuuid(res.data.puuid);
-        console.log(res.data);
-        console.log(res.data.id);
 
         axios
           .get(
             `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${res.data.id}?api_key=${API_KEY}`
           )
           .then((res) => {
-            console.log(res.data[0]);
             setRankData({
               tier: res.data[0].tier,
               rank: res.data[0].rank,
@@ -72,7 +69,7 @@ function Content() {
     <div>
       <div>
         <input type="text" value={inputValue} onChange={handleInput} />
-        <button onClick={handleSearch}>Search</button>
+        <button className="btn btn-success" onClick={handleSearch}>Search</button>
       </div>
       {data && (
         <div id="data">
