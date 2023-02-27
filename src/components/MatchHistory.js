@@ -387,6 +387,10 @@ function MatchHistory({ puuid }) {
                 src={`./images/items/${item}.png`}
                 alt={"item"}
                 width={"20px"}
+                onError={(e) => {
+                  e.target.onerror = null; 
+                  e.target.src = "./images/items/1103.png"; 
+                }}
               ></img>
             ))}
             <p>{match.gameDuration}</p>
