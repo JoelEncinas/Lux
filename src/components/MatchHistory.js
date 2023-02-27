@@ -384,7 +384,7 @@ function MatchHistory({ puuid }) {
             {match.items.map((item, index) => (
               <img
                 className="item-image"
-                src={`./images/${item}.png`}
+                src={`./images/items/${item}.png`}
                 alt={"item"}
                 width={"20px"}
               ></img>
