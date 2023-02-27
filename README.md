@@ -15,7 +15,6 @@ https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TPA%20MiSTakE
 
 ### TODO
 
-- add bootswatch theme 
 - add kda and K + D + A
 - add lv of the champion
 - add summoners of the match

@@ -1,5 +1,5 @@
 ul {
-    padding-inline-start: 0;
+    padding-inline-start: 0 !important;
 }
 
 .player-rank {
@@ -9,11 +9,6 @@ ul {
 
 #data {
     background-color: bisque;
-    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-}
-
-#match-history {
-    font-family: 'Crimson Text', serif !important;
 }
 
 #last-ten {
