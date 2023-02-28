@@ -413,7 +413,7 @@ function MatchHistory({ puuid }) {
             key={match.id}
           >
             <p>Champion played: {match.champion}</p>
-            <p>KDA: {match.kda}</p>
+            <p>KDA: {match.kda && match.kda.toFixed(2)}</p>
             {match.items.map((item, index) => (
               <img
                 key={index}
