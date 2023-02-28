@@ -26,6 +26,33 @@ function MatchHistory({ puuid }) {
 
         const data = await Promise.all(promises);
 
+        // UTILS
+        function findMostFrequentString(arr) {
+          let frequency = {};
+          let maxCount = 0;
+          let mostFrequent;
+          for (let str of arr) {
+            frequency[str] = frequency[str] ? frequency[str] + 1 : 1;
+            if (frequency[str] > maxCount) {
+              maxCount = frequency[str];
+              mostFrequent = str;
+            }
+          }
+          return mostFrequent;
+        }
+
+        function formatDate(ndate) {
+          const date = new Date(ndate);
+          const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+          return date.toLocaleDateString("en-GB", options);
+        }
+
+        function formatDuration(durationInSeconds) {
+          let minutes = Math.floor(durationInSeconds / 60);
+          let seconds = Math.floor(durationInSeconds % 60);
+          return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
+        }
+
         let positions = [];
         for (let j = 0; j < 10; j++) {
           // Loop over data[0] and data[1]
@@ -44,47 +71,21 @@ function MatchHistory({ puuid }) {
           champArr.push(data[i].info.participants[positions[i]].championName);
         }
 
-        function findMostFrequentString(arr) {
-          let frequency = {};
-          let maxCount = 0;
-          let mostFrequent;
-          for (let str of arr) {
-            frequency[str] = frequency[str] ? frequency[str] + 1 : 1;
-            if (frequency[str] > maxCount) {
-              maxCount = frequency[str];
-              mostFrequent = str;
-            }
-          }
-          return mostFrequent;
-        }
-
         setMostFreq(findMostFrequentString(champArr));
 
-        const wrArr = [];
+        const matchHistoryArr = [];
 
-        for (let i = 0; i < data.length; i++) {
-          const win = data[i].info.participants[positions[i]].win;
-          wrArr.push(win);
-        }
+        const wrArr = data.map(
+          (d) =>
+            d.info.participants[
+              positions[d.metadata.participants.indexOf(puuid)]
+            ].win
+        );
 
         const trueCount = wrArr.filter((win) => win).length;
         const falseCount = wrArr.filter((win) => !win).length;
 
         setWrTen({ win: trueCount, lose: falseCount });
-
-        function formatDate(ndate) {
-          const date = new Date(ndate);
-          const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-          return date.toLocaleDateString("en-GB", options);
-        }
-
-        function formatDuration(durationInSeconds) {
-          let minutes = Math.floor(durationInSeconds / 60);
-          let seconds = Math.floor(durationInSeconds % 60);
-          return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
-        }
-
-        const matchHistoryArr = [];
 
         for (let i = 0; i < data.length; i++) {
           const match = data[i].info.participants[positions[i]];
@@ -152,31 +153,32 @@ function MatchHistory({ puuid }) {
         </div>
       )}
       <ul>
-        {matchHistory.map((match) => (
-          <li
-            style={{ backgroundColor: match.win ? "#d2ebf5" : "#f7dddc" }}
-            key={match.id}
-          >
-            <p>Champion played: {match.champion}</p>
-            <p>KDA: {match.kda && match.kda.toFixed(2)}</p>
-            {match.items.map((item, index) => (
-              <img
-                key={index}
-                className="item-image"
-                src={`./images/items/${item}.png`}
-                alt={"item"}
-                width={"30px"}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "./images/items/4403.png";
-                }}
-              ></img>
-            ))}
-            <p>{match.gameDuration}</p>
-            <small>{match.date}</small>
-            <p>Result: {match.win ? "Win" : "Lose"}</p>
-          </li>
-        ))}
+        {matchHistory &&
+          matchHistory.map((match) => (
+            <li
+              style={{ backgroundColor: match.win ? "#d2ebf5" : "#f7dddc" }}
+              key={match.id}
+            >
+              <p>Champion played: {match.champion}</p>
+              <p>KDA: {match.kda && match.kda.toFixed(2)}</p>
+              {match.items.map((item, index) => (
+                <img
+                  key={index}
+                  className="item-image"
+                  src={`./images/items/${item}.png`}
+                  alt={"item"}
+                  width={"30px"}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "./images/items/4403.png";
+                  }}
+                ></img>
+              ))}
+              <p>{match.gameDuration}</p>
+              <small>{match.date}</small>
+              <p>Result: {match.win ? "Win" : "Lose"}</p>
+            </li>
+          ))}
       </ul>
     </div>
   );

@@ -52,33 +52,78 @@ function ChampionRotation() {
   };
 
   return (
-    <div>
-      <h3>Free weekly rotation</h3>
-      <div>
-        <button className="btn btn-primary" onClick={() => handleFilter(null)}><img src="images/damage/all.png" width={'20px'} alt={'all damage'}></img> All</button>
-        <button className="btn btn-primary" onClick={() => handleFilter("kPhysical")}><img src="images/damage/physical.png" width={'15px'} alt={'physical damage'}></img> Physical</button>
-        <button className="btn btn-primary" onClick={() => handleFilter("kMagic")}><img src="images/damage/magic.png" width={'17px'} alt={'magic damage'}></img> Magical</button>
-        <button className="btn btn-primary" onClick={() => handleFilter("kMixed")}><img src="images/damage/adaptative.png" width={'20px'} alt={'adaptative damage'}></img> Mixed</button>
-      </div>
-      {championData === null ? (
-        <p>Loading...</p>
-      ) : (
+    <div id="free-rotation-container">
+      {championData && (
         <div>
-          {championData
-            .filter((champion) => !filter || champion.damageType === filter)
-            .map((champion) => (
-              <a key={champion.name}
-                href={CHAMPION_INFO + champion.name.replace(/[\s']+/g, '-')}
-                target={"_blank"}
-                rel={"noreferrer"}
-              >
-                <img
-                  src={CHAMPION_ICONS + champion.id + ".png"}
-                  alt="portrait of the champion"
-                  width={"50px"}
-                />
-              </a>
-            ))}
+          <h3>Free weekly rotation</h3>
+          <div>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleFilter(null)}
+            >
+              <img
+                src="images/damage/all.png"
+                width={"20px"}
+                alt={"all damage"}
+              ></img>{" "}
+              All
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleFilter("kPhysical")}
+            >
+              <img
+                src="images/damage/physical.png"
+                width={"15px"}
+                alt={"physical damage"}
+              ></img>{" "}
+              Physical
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleFilter("kMagic")}
+            >
+              <img
+                src="images/damage/magic.png"
+                width={"17px"}
+                alt={"magic damage"}
+              ></img>{" "}
+              Magical
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleFilter("kMixed")}
+            >
+              <img
+                src="images/damage/adaptative.png"
+                width={"20px"}
+                alt={"adaptative damage"}
+              ></img>{" "}
+              Mixed
+            </button>
+          </div>
+          {championData === null ? (
+            <p>Loading...</p>
+          ) : (
+            <div>
+              {championData
+                .filter((champion) => !filter || champion.damageType === filter)
+                .map((champion) => (
+                  <a
+                    key={champion.name}
+                    href={CHAMPION_INFO + champion.name.replace(/[\s']+/g, "-")}
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                  >
+                    <img
+                      src={CHAMPION_ICONS + champion.id + ".png"}
+                      alt="portrait of the champion"
+                      width={"50px"}
+                    />
+                  </a>
+                ))}
+            </div>
+          )}
         </div>
       )}
     </div>
