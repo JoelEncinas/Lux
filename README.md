@@ -15,10 +15,4 @@ https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TPA%20MiSTakE
 
 ### TODO
 
-- style all boxes
-
-- download perks and display icons of that and summoners + champion
-
-- add kda and K + D + A
-- add lv of the champion
-- add runes (primary and secondary main tree)
+- style all boxes (ugg)
