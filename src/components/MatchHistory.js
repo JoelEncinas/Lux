@@ -107,7 +107,7 @@ function MatchHistory({ puuid }) {
               match.item5,
               match.item6,
             ],
-            primaryPerk: match.perks.styles[0].selections.perk,
+            primaryPerk: match.perks.styles[0].style,
             secondaryPerk: match.perks.styles[1].style,
             summoner1Id: match.summoner1Id,
             summoner2Id: match.summoner2Id,
@@ -159,8 +159,43 @@ function MatchHistory({ puuid }) {
               style={{ backgroundColor: match.win ? "#d2ebf5" : "#f7dddc" }}
               key={match.id}
             >
-              <p>Champion played: {match.champion}</p>
+              <img
+                className="champion-image"
+                src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${match.championId}.png`}
+                alt={"champion"}
+                width={"30px"}
+              ></img>
+              <p>Lv.{match.level}</p>
+              <p>
+                {match.kills} /{" "}
+                <span className="text-danger">{match.deaths}</span> /{" "}
+                {match.assists}
+              </p>
               <p>KDA: {match.kda && match.kda.toFixed(2)}</p>
+              <img
+                className="summoner-image"
+                src={`./images/summoner/${match.summoner1Id}.png`}
+                alt={"summoner1"}
+                width={"30px"}
+              ></img>
+              <img
+                className="summoner-image"
+                src={`./images/summoner/${match.summoner2Id}.png`}
+                alt={"summoner2"}
+                width={"30px"}
+              ></img>
+              <img
+                className="perk-image"
+                src={`./images/runes/${match.primaryPerk}.png`}
+                alt={"perk1"}
+                width={"30px"}
+              ></img>
+              <img
+                className="perk-image"
+                src={`./images/runes/${match.secondaryPerk}.png`}
+                alt={"perk2"}
+                width={"30px"}
+              ></img>
               {match.items.map((item, index) => (
                 <img
                   key={index}
@@ -174,6 +209,11 @@ function MatchHistory({ puuid }) {
                   }}
                 ></img>
               ))}
+              <p>Dmg: {match.totalDamageDealtToChampions}</p>
+              <p className="text-warning">
+                {match.gold} <span className="text-muted">gold</span>
+              </p>
+              <p>Vision score: {match.visionScore}</p>
               <p>{match.gameDuration}</p>
               <small>{match.date}</small>
               <p>Result: {match.win ? "Win" : "Lose"}</p>

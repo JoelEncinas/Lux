@@ -15,12 +15,10 @@ https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TPA%20MiSTakE
 
 ### TODO
 
-- download perks and display icons of that and summoners + champion
 - style all boxes
-- refactor code that fetches data
+
+- download perks and display icons of that and summoners + champion
+
 - add kda and K + D + A
 - add lv of the champion
-- add summoners of the match
 - add runes (primary and secondary main tree)
-- add summoner runes 
-- improve free rotation section > change icons
