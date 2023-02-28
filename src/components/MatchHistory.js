@@ -4,6 +4,7 @@ function MatchHistory({ puuid }) {
   const [matchHistory, setMatchHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [mostFreq, setMostFreq] = useState(null);
+  const [avgKDA, setavgKDA] = useState(null);
   const [wrTen, setWrTen] = useState(null);
 
   useEffect(() => {
@@ -87,6 +88,8 @@ function MatchHistory({ puuid }) {
 
         setWrTen({ win: trueCount, lose: falseCount });
 
+        let avgKda = 0;
+
         for (let i = 0; i < data.length; i++) {
           const match = data[i].info.participants[positions[i]];
 
@@ -121,10 +124,13 @@ function MatchHistory({ puuid }) {
             visionScore: match.visionScore,
           };
 
+          avgKda += match.challenges.kda;
           matchHistoryArr.push(matchObject);
         }
 
         setMatchHistory(matchHistoryArr);
+
+        setavgKDA((avgKda / 10).toFixed(2));
       }
 
       fetchMatches();
@@ -142,7 +148,7 @@ function MatchHistory({ puuid }) {
         <div id="last-ten" className="gray">
           <p>Last 10 matches</p>
           <p>
-            Most used champion: 
+            Most used champion:
             <img
               className="champion-image"
               src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${mostFreq}.png`}
@@ -150,6 +156,7 @@ function MatchHistory({ puuid }) {
               width={"30px"}
             ></img>
           </p>
+          <p>Avg KDA: {avgKDA}</p>
           <p>
             {wrTen &&
               `W${wrTen.win} L${wrTen.lose} WinRate ` +
@@ -220,6 +227,15 @@ function MatchHistory({ puuid }) {
                 {match.gold} <span className="text-muted">gold</span>
               </p>
               <p>Vision score: {match.visionScore}</p>
+              {match.largestMultiKill > 4 ? (
+                <span className="badge rounded-pill bg-danger">Penta kill</span>
+              ) : match.largestMultiKill > 3 ? (
+                <span className="badge rounded-pill bg-danger">Quadra kill</span>
+              ) : match.largestMultiKill > 2 ? (
+                <span className="badge rounded-pill bg-danger">Triple kill</span>
+              ) : match.largestMultiKill > 1 ? (
+                <span className="badge rounded-pill bg-danger">Double kill</span>
+              ) : null}
               <p>{match.gameDuration}</p>
               <small>{match.date}</small>
               <p>Result: {match.win ? "Win" : "Lose"}</p>
