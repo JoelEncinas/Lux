@@ -68,7 +68,7 @@ function MatchHistory({ puuid }) {
         let champArr = [];
 
         for (let i = 0; i < 10; i++) {
-          champArr.push(data[i].info.participants[positions[i]].championName);
+          champArr.push(data[i].info.participants[positions[i]].championId);
         }
 
         setMostFreq(findMostFrequentString(champArr));
@@ -142,7 +142,13 @@ function MatchHistory({ puuid }) {
         <div id="last-ten" className="gray">
           <p>Last 10 matches</p>
           <p>
-            Most used champion: <strong>{mostFreq}</strong>
+            Most used champion: 
+            <img
+              className="champion-image"
+              src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${mostFreq}.png`}
+              alt={"champion"}
+              width={"30px"}
+            ></img>
           </p>
           <p>
             {wrTen &&
