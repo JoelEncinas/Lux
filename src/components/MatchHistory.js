@@ -420,7 +420,7 @@ function MatchHistory({ puuid }) {
                 className="item-image"
                 src={`./images/items/${item}.png`}
                 alt={"item"}
-                width={"20px"}
+                width={"30px"}
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "./images/items/1103.png";
