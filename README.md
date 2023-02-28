@@ -15,6 +15,7 @@ https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TPA%20MiSTakE
 
 ### TODO
 
+- style all boxes
 - refactor code that fetches data
 - add kda and K + D + A
 - add lv of the champion

@@ -27,7 +27,9 @@ function Content() {
     setInputValue(e.target.value);
   };
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
+
     // clear data
     document.getElementById("error").style.display = "none";
     setData(null);
@@ -67,14 +69,32 @@ function Content() {
 
   return (
     <div>
-      <div>
-        <input type="text" value={inputValue} onChange={handleInput} />
-        <button className="btn btn-success" onClick={handleSearch}>Search</button>
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control"
+          value={inputValue}
+          onChange={handleInput}
+          id="summoner-name"
+          placeholder="Enter summoner name"
+        />
+        <small id="summoner-name-euw" className="form-text text-muted">
+          *EUW Only
+        </small>
       </div>
+      <button className="btn btn-success" onClick={handleSearch}>
+        Search
+      </button>
+
       {data && (
-        <div id="data">
+        <div id="data" className="bg-yellow">
           <p>name: {data.name}</p>
-          <p>rank : {rankData ? `${rankData.tier} ${rankData.rank} ${rankData.leaguePoints} lp` : 'Unranked'} </p>
+          <p>
+            rank :{" "}
+            {rankData
+              ? `${rankData.tier} ${rankData.rank} ${rankData.leaguePoints} lp`
+              : "Unranked"}{" "}
+          </p>
           {rankData && rankData.tier === "CHALLENGER" && (
             <img
               className="player-rank"
@@ -106,7 +126,9 @@ function Content() {
               alt="Platinum Icon"
             />
           )}
-          {rankData && rankData.tier === "GOLD" && <img src={GOLD_ICON} alt="Gold Icon" />}
+          {rankData && rankData.tier === "GOLD" && (
+            <img src={GOLD_ICON} alt="Gold Icon" />
+          )}
           {rankData && rankData.tier === "SILVER" && (
             <img className="player-rank" src={SILVER_ICON} alt="Silver Icon" />
           )}
@@ -116,7 +138,14 @@ function Content() {
           {rankData && rankData.tier === "IRON" && (
             <img className="player-rank" src={IRON_ICON} alt="Iron Icon" />
           )}
-          <p>{rankData && `W${rankData.wins} L${rankData.losses} WinRate ` + parseInt((rankData.wins / (rankData.losses + rankData.wins)) * 100) + '%'}</p>
+          <p>
+            {rankData &&
+              `W${rankData.wins} L${rankData.losses} WinRate ` +
+                parseInt(
+                  (rankData.wins / (rankData.losses + rankData.wins)) * 100
+                ) +
+                "%"}
+          </p>
           <p>summoner level: {data.summonerLevel}</p>
           <img
             src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
@@ -125,8 +154,8 @@ function Content() {
           ></img>
         </div>
       )}
-      <div id="error" style={{ display: "none" }}>
-        Summoner not found
+      <div id="error" className="text-danger" style={{ display: "none" }}>
+        Oops! Summoner not found...
       </div>
       <div>{puuid && <MatchHistory puuid={puuid} />}</div>
     </div>

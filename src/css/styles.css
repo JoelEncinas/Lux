@@ -2,20 +2,27 @@ ul {
     padding-inline-start: 0 !important;
 }
 
+#summoner-name-euw {
+    font-style: italic;
+}
+
 .player-rank {
     width: 50px;
-}
-
-
-#data {
-    background-color: bisque;
-}
-
-#last-ten {
-    background-color: #e4e4e4;
 }
 
 .item-image {
     border-radius: 5px;
     padding: 0 1px;
+}
+
+.blue {
+    background-color: #d2ebf5 !important;
+}
+
+.red {
+    background-color: #f7dddc !important;
+}
+
+.gray {
+    background-color: #ECECEC !important;
 }

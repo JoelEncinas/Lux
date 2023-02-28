@@ -393,7 +393,7 @@ function MatchHistory({ puuid }) {
   return (
     <div id="match-history">
       {wrTen && (
-        <div id="last-ten">
+        <div id="last-ten" className="gray">
           <p>Last 10 matches</p>
           <p>
             Most used champion: <strong>{mostFreq}</strong>
@@ -409,7 +409,7 @@ function MatchHistory({ puuid }) {
       <ul>
         {matchHistory.map((match) => (
           <li
-            style={{ backgroundColor: match.win ? "#E0F2F1" : "#FFCDD2" }}
+            style={{ backgroundColor: match.win ? "#d2ebf5" : "#f7dddc" }}
             key={match.id}
           >
             <p>Champion played: {match.champion}</p>
