@@ -423,7 +423,7 @@ function MatchHistory({ puuid }) {
                 width={"30px"}
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src = "./images/items/1103.png";
+                  e.target.src = "./images/items/4403.png";
                 }}
               ></img>
             ))}
