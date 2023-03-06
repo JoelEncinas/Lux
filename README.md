@@ -16,3 +16,4 @@ https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TPA%20MiSTakE
 ### TODO
 
 - style all boxes (ugg)
+- child component passing props 
