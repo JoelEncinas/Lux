@@ -67,6 +67,18 @@ function Content() {
       });
   };
 
+  const rankIcons = {
+    CHALLENGER: CHALLENGER_ICON,
+    GRANDMASTER: GRANDMASTER_ICON,
+    MASTER: MASTER_ICON,
+    DIAMOND: DIAMOND_ICON,
+    PLATINUM: PLATINUM_ICON,
+    GOLD: GOLD_ICON,
+    SILVER: SILVER_ICON,
+    BRONZE: BRONZE_ICON,
+    IRON: IRON_ICON,
+  };
+
   return (
     <div>
       <div className="form-group">
@@ -95,49 +107,14 @@ function Content() {
               ? `${rankData.tier} ${rankData.rank} ${rankData.leaguePoints} lp`
               : "Unranked"}{" "}
           </p>
-          {rankData && rankData.tier === "CHALLENGER" && (
+          {rankData && rankData.tier in rankIcons && (
             <img
               className="player-rank"
-              src={CHALLENGER_ICON}
-              alt="Challenger Icon"
+              src={rankIcons[rankData.tier]}
+              alt={`${rankData.tier} Icon`}
             />
           )}
-          {rankData && rankData.tier === "GRANDMASTER" && (
-            <img
-              className="player-rank"
-              src={GRANDMASTER_ICON}
-              alt="Grandmaster Icon"
-            />
-          )}
-          {rankData && rankData.tier === "MASTER" && (
-            <img className="player-rank" src={MASTER_ICON} alt="Master Icon" />
-          )}
-          {rankData && rankData.tier === "DIAMOND" && (
-            <img
-              className="player-rank"
-              src={DIAMOND_ICON}
-              alt="Diamond Icon"
-            />
-          )}
-          {rankData && rankData.tier === "PLATINUM" && (
-            <img
-              className="player-rank"
-              src={PLATINUM_ICON}
-              alt="Platinum Icon"
-            />
-          )}
-          {rankData && rankData.tier === "GOLD" && (
-            <img src={GOLD_ICON} alt="Gold Icon" />
-          )}
-          {rankData && rankData.tier === "SILVER" && (
-            <img className="player-rank" src={SILVER_ICON} alt="Silver Icon" />
-          )}
-          {rankData && rankData.tier === "BRONZE" && (
-            <img className="player-rank" src={BRONZE_ICON} alt="Bronze Icon" />
-          )}
-          {rankData && rankData.tier === "IRON" && (
-            <img className="player-rank" src={IRON_ICON} alt="Iron Icon" />
-          )}
+
           <p>
             {rankData &&
               `W${rankData.wins} L${rankData.losses} WinRate ` +
