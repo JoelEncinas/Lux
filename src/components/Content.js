@@ -11,7 +11,7 @@ import {
   SILVER_ICON,
   BRONZE_ICON,
   IRON_ICON,
-} from "./assets";
+} from "../utils/assets";
 
 function Content() {
   const [inputValue, setInputValue] = useState("");
