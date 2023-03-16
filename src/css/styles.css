@@ -18,7 +18,8 @@ ul {
 /* SUMMONER SEARCH */
 
 .summoner-search {
-    width: 300px !important;
+    min-width: 200px !important;
+    max-width: 300px !important;
 }
 
 #summoner-name-euw {
@@ -26,6 +27,7 @@ ul {
 }
 
 /* MATCH-HISTORY */
+
 .player-rank {
     width: 50px;
 }
@@ -33,4 +35,10 @@ ul {
 .item-image {
     border-radius: 5px;
     padding: 0 1px;
+}
+
+/* ROTATION */
+
+#free-rotation-container {
+    max-width: 500px;
 }

@@ -55,8 +55,8 @@ function ChampionRotation() {
     <div id="free-rotation-container">
       {championData && (
         <div>
-          <h4>Free weekly rotation</h4>
-          <div>
+          <h1 className="text-center pb-3">Free weekly rotation</h1>
+          <div className="d-flex justify-content-center">
             <button
               className="btn btn-primary"
               onClick={() => handleFilter(null)}
@@ -105,7 +105,7 @@ function ChampionRotation() {
           {championData === null ? (
             <p>Loading...</p>
           ) : (
-            <div>
+            <div className="p-5 d-flex justify-content-center flex-wrap">
               {championData
                 .filter((champion) => !filter || champion.damageType === filter)
                 .map((champion) => (

@@ -1,13 +1,22 @@
 import React from "react";
-import ChampionRotation from "./components/ChampionRotation";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
+import ChampionRotation from "./components/ChampionRotation";
+import About from "./components/About";
 
 function App() {
   return (
-    <div className="App">
-      <Profile />
-      <ChampionRotation />
-    </div>
+    <>
+      <Navbar></Navbar>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Profile />} />
+          <Route path="/rotation" element={<ChampionRotation />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
