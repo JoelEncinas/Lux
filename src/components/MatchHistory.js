@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Match from "./Match";
 
 function MatchHistory({ puuid }) {
   const [matchHistory, setMatchHistory] = useState([]);
@@ -167,80 +168,7 @@ function MatchHistory({ puuid }) {
       )}
       <ul>
         {matchHistory &&
-          matchHistory.map((match) => (
-            <li
-              style={{ backgroundColor: match.win ? "#d2ebf5" : "#f7dddc" }}
-              key={match.id}
-            >
-              <img
-                className="champion-image"
-                src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${match.championId}.png`}
-                alt={"champion"}
-                width={"30px"}
-              ></img>
-              <p>Lv.{match.level}</p>
-              <p>
-                {match.kills} /{" "}
-                <span className="text-danger">{match.deaths}</span> /{" "}
-                {match.assists}
-              </p>
-              <p>KDA: {match.kda && match.kda.toFixed(2)}</p>
-              <img
-                className="summoner-image"
-                src={`./images/summoner/${match.summoner1Id}.png`}
-                alt={"summoner1"}
-                width={"30px"}
-              ></img>
-              <img
-                className="summoner-image"
-                src={`./images/summoner/${match.summoner2Id}.png`}
-                alt={"summoner2"}
-                width={"30px"}
-              ></img>
-              <img
-                className="perk-image"
-                src={`./images/runes/${match.primaryPerk}.png`}
-                alt={"perk1"}
-                width={"30px"}
-              ></img>
-              <img
-                className="perk-image"
-                src={`./images/runes/${match.secondaryPerk}.png`}
-                alt={"perk2"}
-                width={"30px"}
-              ></img>
-              {match.items.map((item, index) => (
-                <img
-                  key={index}
-                  className="item-image"
-                  src={`./images/items/${item}.png`}
-                  alt={"item"}
-                  width={"30px"}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "./images/items/4403.png";
-                  }}
-                ></img>
-              ))}
-              <p>Dmg: {match.totalDamageDealtToChampions}</p>
-              <p className="text-warning">
-                {match.gold} <span className="text-muted">gold</span>
-              </p>
-              <p>Vision score: {match.visionScore}</p>
-              {match.largestMultiKill > 4 ? (
-                <span className="badge rounded-pill bg-danger">Penta kill</span>
-              ) : match.largestMultiKill > 3 ? (
-                <span className="badge rounded-pill bg-danger">Quadra kill</span>
-              ) : match.largestMultiKill > 2 ? (
-                <span className="badge rounded-pill bg-danger">Triple kill</span>
-              ) : match.largestMultiKill > 1 ? (
-                <span className="badge rounded-pill bg-danger">Double kill</span>
-              ) : null}
-              <p>{match.gameDuration}</p>
-              <small>{match.date}</small>
-              <p>Result: {match.win ? "Win" : "Lose"}</p>
-            </li>
-          ))}
+          matchHistory.map((match) => <Match key={match.id} match={match} />)}
       </ul>
     </div>
   );
