@@ -18,8 +18,9 @@ function About() {
       <h2 className="text-info">Tech</h2>
       <p>
         The page uses the core functionality of{" "}
-        <span className="text-success">React</span>. I've used{" "}
-        <code>react-dom-router</code> too so the page isn't a spa. The data is
+        <span className="text-success">React</span> including hooks like{" "}
+        <code>useState</code> and <code>useEffect</code>. I've used{" "}
+        <code>react-router-dom</code> too so the page isn't a spa. The data is
         pulled from the{" "}
         <a href="https://developer.riotgames.com/" target="_blank">
           riot api
