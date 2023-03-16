@@ -107,21 +107,19 @@ function Profile() {
 
       {data && (
         <div id="data" className="my-5">
-          <img
-            className="profile-pic"
-            src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
-            width={"50px"}
-            alt={"summoner profile"}
-          ></img>
-          <p className="h2">{data.name}</p>
-          <p className="h5 text-muted">{data.summonerLevel}</p>
+          <div className="d-flex align-items-center justify-content-center mb-3">
+            <img
+              className="profile-pic mx-2"
+              src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
+              width={"50px"}
+              alt={"summoner profile"}
+            ></img>
+            <div>
+              <p className="h2 m-0">{data.name}</p>
+              <p className="h5 text-muted m-0">{data.summonerLevel}</p>
+            </div>
+          </div>
 
-          <p>
-            rank :{" "}
-            {rankData
-              ? `${rankData.tier} ${rankData.rank} ${rankData.leaguePoints} lp`
-              : "Unranked"}{" "}
-          </p>
           {rankData && rankData.tier in rankIcons && (
             <img
               className="player-rank"
@@ -129,6 +127,12 @@ function Profile() {
               alt={`${rankData.tier} Icon`}
             />
           )}
+          <p>
+            rank :{" "}
+            {rankData
+              ? `${rankData.tier} ${rankData.rank} ${rankData.leaguePoints} lp`
+              : "Unranked"}{" "}
+          </p>
 
           <p>
             {rankData &&

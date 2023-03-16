@@ -30,8 +30,10 @@ function About() {
         >
           riot api
         </a>{" "}
-        using <span className="text-success">axios</span> and it uses a{" "}
-        <span className="text-success">bootstrap</span> theme for the styling.
+        using <span className="text-success">axios</span> and some of the assets
+        are scraped using <span className="text-success">python</span> from the
+        riot cdn. It uses a <span className="text-success">bootstrap</span>{" "}
+        theme for the styling.
       </p>
     </div>
   );
