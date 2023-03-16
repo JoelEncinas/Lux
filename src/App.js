@@ -1,11 +1,11 @@
 import React from "react";
 import ChampionRotation from "./components/ChampionRotation";
-import Content from "./components/Content";
+import Profile from "./components/Profile";
 
 function App() {
   return (
     <div className="App">
-      <Content />
+      <Profile />
       <ChampionRotation />
     </div>
   );

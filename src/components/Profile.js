@@ -13,7 +13,7 @@ import {
   IRON_ICON,
 } from "../utils/assets";
 
-function Content() {
+function Profile() {
   const [inputValue, setInputValue] = useState("");
   const [data, setData] = useState(null);
   const [puuid, setPuuid] = useState(null);
@@ -139,4 +139,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default Profile;
