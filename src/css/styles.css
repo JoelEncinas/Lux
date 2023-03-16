@@ -1,6 +1,7 @@
 /* UTILS */
 ul {
     padding-inline-start: 0 !important;
+    list-style: none;
 }
 
 .blue {
@@ -19,11 +20,16 @@ ul {
 
 .summoner-search {
     min-width: 200px !important;
-    max-width: 300px !important;
 }
 
 #summoner-name-euw {
     font-style: italic;
+}
+
+/* PROFILE */
+
+.profile-pic {
+    border-radius: 5px;
 }
 
 /* MATCH-HISTORY */

@@ -73,7 +73,7 @@ const Match = ({ match }) => {
         ></img>
       ))}
       <p>Dmg: {totalDamageDealtToChampions}</p>
-      <p className="text-warning">
+      <p className="text-info">
         {gold} <span className="text-muted">gold</span>
       </p>
       <p>Vision score: {visionScore}</p>

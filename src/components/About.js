@@ -5,11 +5,11 @@ function About() {
       <h2 className="text-info">The Idea</h2>
       <p className="pb-5">
         I've always used pages like{" "}
-        <a href="https://www.op.gg/" target="_blank">
+        <a href="https://www.op.gg/" target="_blank" rel="noreferrer">
           opgg
         </a>{" "}
         or{" "}
-        <a href="https://u.gg/" target="_blank">
+        <a href="https://u.gg/" target="_blank" rel="noreferrer">
           ugg
         </a>{" "}
         to look up my league of legends profile, so I decided to practice my
@@ -18,11 +18,16 @@ function About() {
       <h2 className="text-info">Tech</h2>
       <p>
         The page uses the core functionality of{" "}
-        <span className="text-success">React</span> including hooks like{" "}
+        <span className="text-success">React</span> like conditional rendering
+        or passing props to children components. It also implements hooks like{" "}
         <code>useState</code> and <code>useEffect</code>. I've used{" "}
         <code>react-router-dom</code> too so the page isn't a spa. The data is
         pulled from the{" "}
-        <a href="https://developer.riotgames.com/" target="_blank">
+        <a
+          href="https://developer.riotgames.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
           riot api
         </a>{" "}
         using <span className="text-success">axios</span> and it uses a{" "}

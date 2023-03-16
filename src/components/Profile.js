@@ -106,8 +106,16 @@ function Profile() {
       </div>
 
       {data && (
-        <div id="data" className="bg-yellow">
-          <p>name: {data.name}</p>
+        <div id="data" className="my-5">
+          <img
+            className="profile-pic"
+            src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
+            width={"50px"}
+            alt={"summoner profile"}
+          ></img>
+          <p className="h2">{data.name}</p>
+          <p className="h5 text-muted">{data.summonerLevel}</p>
+
           <p>
             rank :{" "}
             {rankData
@@ -130,15 +138,13 @@ function Profile() {
                 ) +
                 "%"}
           </p>
-          <p>summoner level: {data.summonerLevel}</p>
-          <img
-            src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
-            width={"50px"}
-            alt={"summoner profile"}
-          ></img>
         </div>
       )}
-      <div id="error" className="text-danger text-center p-5" style={{ display: "none" }}>
+      <div
+        id="error"
+        className="text-danger text-center p-5"
+        style={{ display: "none" }}
+      >
         Oops! Summoner not found...
       </div>
       <div>{puuid && <MatchHistory puuid={puuid} />}</div>

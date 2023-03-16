@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <div className="d-flex justify-content-center py-5">
+      <div className="d-flex justify-content-center py-5  mx-3">
         <Routes>
           <Route path="/" element={<Profile />} />
           <Route path="/rotation" element={<ChampionRotation />} />
