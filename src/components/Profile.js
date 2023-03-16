@@ -84,22 +84,26 @@ function Profile() {
 
   return (
     <div>
-      <div className="form-group">
-        <input
-          type="text"
-          className={`form-control ${hasError ? "is-invalid" : ""}`}
-          value={inputValue}
-          onChange={handleInput}
-          id="summoner-name"
-          placeholder="Enter summoner name"
-        />
-        <small id="summoner-name-euw" className="form-text text-muted">
+      <div className="form-group d-flex flex-column align-items-center">
+        <div className="d-flex">
+          <input
+            type="text"
+            className={`form-control summoner-search ${
+              hasError ? "is-invalid" : ""
+            }`}
+            value={inputValue}
+            onChange={handleInput}
+            id="summoner-name"
+            placeholder="Enter summoner name"
+          />
+          <button className="btn btn-success" onClick={handleSearch}>
+            Search
+          </button>
+        </div>
+        <small id="summoner-name-euw" className="form-text text-muted p-2">
           *EUW Only
         </small>
       </div>
-      <button className="btn btn-success" onClick={handleSearch}>
-        Search
-      </button>
 
       {data && (
         <div id="data" className="bg-yellow">
@@ -134,7 +138,7 @@ function Profile() {
           ></img>
         </div>
       )}
-      <div id="error" className="text-danger" style={{ display: "none" }}>
+      <div id="error" className="text-danger text-center p-5" style={{ display: "none" }}>
         Oops! Summoner not found...
       </div>
       <div>{puuid && <MatchHistory puuid={puuid} />}</div>

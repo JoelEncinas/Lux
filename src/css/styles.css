@@ -1,18 +1,6 @@
+/* UTILS */
 ul {
     padding-inline-start: 0 !important;
-}
-
-#summoner-name-euw {
-    font-style: italic;
-}
-
-.player-rank {
-    width: 50px;
-}
-
-.item-image {
-    border-radius: 5px;
-    padding: 0 1px;
 }
 
 .blue {
@@ -25,4 +13,24 @@ ul {
 
 .gray {
     background-color: #ECECEC !important;
+}
+
+/* SUMMONER SEARCH */
+
+.summoner-search {
+    width: 300px !important;
+}
+
+#summoner-name-euw {
+    font-style: italic;
+}
+
+/* MATCH-HISTORY */
+.player-rank {
+    width: 50px;
+}
+
+.item-image {
+    border-radius: 5px;
+    padding: 0 1px;
 }
