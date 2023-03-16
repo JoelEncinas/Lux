@@ -55,7 +55,7 @@ function ChampionRotation() {
     <div id="free-rotation-container">
       {championData && (
         <div>
-          <h3>Free weekly rotation</h3>
+          <h4>Free weekly rotation</h4>
           <div>
             <button
               className="btn btn-primary"

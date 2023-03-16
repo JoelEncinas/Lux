@@ -18,6 +18,7 @@ function Profile() {
   const [data, setData] = useState(null);
   const [puuid, setPuuid] = useState(null);
   const [rankData, setRankData] = useState(null);
+  const [hasError, setHasError] = useState(false);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   const PROFILE_PIC =
@@ -28,6 +29,7 @@ function Profile() {
   };
 
   const handleSearch = (e) => {
+    setHasError(false);
     e.preventDefault();
 
     // clear data
@@ -63,6 +65,7 @@ function Profile() {
       })
       .catch((err) => {
         document.getElementById("error").style.display = "block";
+        setHasError(true);
         console.log(err);
       });
   };
@@ -84,7 +87,7 @@ function Profile() {
       <div className="form-group">
         <input
           type="text"
-          className="form-control"
+          className={`form-control ${hasError ? "is-invalid" : ""}`}
           value={inputValue}
           onChange={handleInput}
           id="summoner-name"
