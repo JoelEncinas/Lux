@@ -107,7 +107,7 @@ function Profile() {
 
       {data && (
         <div id="data" className="my-5">
-          <div className="d-flex align-items-center justify-content-center mb-3">
+          <div className="d-flex align-items-center justify-content-center mb-5">
             <img
               className="profile-pic mx-2"
               src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
@@ -120,6 +120,7 @@ function Profile() {
               </p>
             </div>
           </div>
+          <h4 className="text-center">RANK</h4>
           <div className="d-flex align-items-center justify-content-center">
             {rankData && rankData.tier in rankIcons && (
               <img
@@ -130,14 +131,18 @@ function Profile() {
             )}
             <div className="px-2">
               {" "}
-              <span className="text-primary"> 
+              <span className="text-primary">
                 {rankData ? `${rankData.tier} ${rankData.rank}` : "Unranked"}{" "}
               </span>
               <br />
-              <span className="small-font">{rankData ? `${rankData.leaguePoints} LP` : ""} </span>
+              <span className="small-font">
+                {rankData ? `${rankData.leaguePoints} LP` : ""}{" "}
+              </span>
             </div>
             <div className="px-2">
-              <span className="small-font">{rankData && `${rankData.wins}W ${rankData.losses}L`}</span>
+              <span className="small-font">
+                {rankData && `${rankData.wins}W ${rankData.losses}L`}
+              </span>
               <br />
               <span className="small-font">
                 {rankData &&

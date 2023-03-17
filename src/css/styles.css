@@ -12,12 +12,8 @@ ul {
     background-color: #f7dddc !important;
 }
 
-.gray {
-    background-color: #ECECEC !important; 
-}
-
 .small-font {
-    font-size: 13px;
+    font-size: 13px !important;
 }
 
 /* SUMMONER SEARCH */
@@ -39,6 +35,22 @@ ul {
 
 /* MATCH-HISTORY */
 
+.match {
+    border-radius: 5px;
+    height: 100px;
+}
+
+.champion-container {
+    position: relative;
+}
+
+.level-badge {
+    position: absolute;
+    bottom: -15px;
+    left: 10px;
+    border-radius: 5px;
+}
+
 .champion-image {
     border-radius: 5px;
     width: 50px;
@@ -51,6 +63,15 @@ ul {
 .item-image {
     border-radius: 5px;
     padding: 0 1px;
+}
+
+.items-container {
+    max-width: 100px;
+}
+
+.summoner-image,
+.perk-image {
+    width: 20px;
 }
 
 /* ROTATION */

@@ -7,7 +7,7 @@ import About from "./components/About";
 
 function App() {
   return (
-    <>
+    <div className="d-flex flex-column align-items-center">
       <Navbar></Navbar>
       <div className="d-flex justify-content-center py-5  mx-3">
         <Routes>
@@ -16,7 +16,7 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -52,7 +52,7 @@ function MatchHistory({ puuid }) {
         function formatDuration(durationInSeconds) {
           let minutes = Math.floor(durationInSeconds / 60);
           let seconds = Math.floor(durationInSeconds % 60);
-          return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
+          return `${minutes}:${seconds.toString().padStart(2, "0")}`;
         }
 
         let positions = [];
@@ -115,12 +115,10 @@ function MatchHistory({ puuid }) {
             secondaryPerk: match.perks.styles[1].style,
             summoner1Id: match.summoner1Id,
             summoner2Id: match.summoner2Id,
-            gold: match.goldEarned,
             kda: match.challenges.kda,
             kills: match.kills,
             deaths: match.deaths,
             assists: match.assists,
-            totalDamageDealtToChampions: match.totalDamageDealtToChampions,
             largestMultiKill: match.largestMultiKill,
             visionScore: match.visionScore,
           };
@@ -156,7 +154,9 @@ function MatchHistory({ puuid }) {
               alt={"champion"}
             ></img>
             <div className="px-2">
-              <span className="small-font">10G {wrTen && `${wrTen.win}W ${wrTen.lose}L`}</span>
+              <span className="small-font">
+                10G {wrTen && `${wrTen.win}W ${wrTen.lose}L`}
+              </span>
               <br />
               <span className="small-font">
                 {wrTen &&
