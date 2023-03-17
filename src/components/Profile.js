@@ -111,7 +111,6 @@ function Profile() {
             <img
               className="profile-pic mx-2"
               src={`${PROFILE_PIC}${data.profileIconId}.jpg`}
-              width={"50px"}
               alt={"summoner profile"}
             ></img>
             <div>

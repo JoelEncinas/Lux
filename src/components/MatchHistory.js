@@ -146,24 +146,29 @@ function MatchHistory({ puuid }) {
   return (
     <div id="match-history">
       {wrTen && (
-        <div id="last-ten" className="gray">
-          <p>Last 10 matches</p>
-          <p>
-            Most used champion:
+        <div id="last-ten" className="pb-5">
+          <h4 className="text-center pb-3">Last 10 Games</h4>
+          <div className="d-flex align-items-center justify-content-center">
+            {" "}
             <img
               className="champion-image"
               src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${mostFreq}.png`}
               alt={"champion"}
-              width={"30px"}
             ></img>
-          </p>
-          <p>Avg KDA: {avgKDA}</p>
-          <p>
-            {wrTen &&
-              `W${wrTen.win} L${wrTen.lose} WinRate ` +
-                parseInt((wrTen.win / (wrTen.lose + wrTen.win)) * 100) +
-                "%"}
-          </p>
+            <div className="px-2">
+              <span className="small-font">10G {wrTen && `${wrTen.win}W ${wrTen.lose}L`}</span>
+              <br />
+              <span className="small-font">
+                {wrTen &&
+                  `Win Rate ` +
+                    parseInt((wrTen.win / (wrTen.lose + wrTen.win)) * 100) +
+                    "%"}
+              </span>
+            </div>
+            <div className="px-2">
+              <span>{avgKDA} KDA</span>
+            </div>
+          </div>
         </div>
       )}
       <ul>
