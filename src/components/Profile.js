@@ -116,32 +116,40 @@ function Profile() {
             ></img>
             <div>
               <p className="h2 m-0">{data.name}</p>
-              <p className="h5 text-muted m-0">{data.summonerLevel}</p>
+              <p className="h5 text-muted m-0">
+                <span className="lead">lv</span> {data.summonerLevel}
+              </p>
             </div>
           </div>
-
-          {rankData && rankData.tier in rankIcons && (
-            <img
-              className="player-rank"
-              src={rankIcons[rankData.tier]}
-              alt={`${rankData.tier} Icon`}
-            />
-          )}
-          <p>
-            rank :{" "}
-            {rankData
-              ? `${rankData.tier} ${rankData.rank} ${rankData.leaguePoints} lp`
-              : "Unranked"}{" "}
-          </p>
-
-          <p>
-            {rankData &&
-              `W${rankData.wins} L${rankData.losses} WinRate ` +
-                parseInt(
-                  (rankData.wins / (rankData.losses + rankData.wins)) * 100
-                ) +
-                "%"}
-          </p>
+          <div className="d-flex align-items-center justify-content-center">
+            {rankData && rankData.tier in rankIcons && (
+              <img
+                className="player-rank"
+                src={rankIcons[rankData.tier]}
+                alt={`${rankData.tier} Icon`}
+              />
+            )}
+            <div className="px-2">
+              {" "}
+              <span className="text-primary"> 
+                {rankData ? `${rankData.tier} ${rankData.rank}` : "Unranked"}{" "}
+              </span>
+              <br />
+              <span className="small-font">{rankData ? `${rankData.leaguePoints} LP` : ""} </span>
+            </div>
+            <div className="px-2">
+              <span className="small-font">{rankData && `${rankData.wins}W ${rankData.losses}L`}</span>
+              <br />
+              <span className="small-font">
+                {rankData &&
+                  "Win Rate " +
+                    parseInt(
+                      (rankData.wins / (rankData.losses + rankData.wins)) * 100
+                    ) +
+                    "%"}
+              </span>
+            </div>
+          </div>
         </div>
       )}
       <div

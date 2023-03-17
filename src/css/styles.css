@@ -16,6 +16,10 @@ ul {
     background-color: #ECECEC !important;
 }
 
+.small-font {
+    font-size: 13px;
+}
+
 /* SUMMONER SEARCH */
 
 .summoner-search {
@@ -35,7 +39,7 @@ ul {
 /* MATCH-HISTORY */
 
 .player-rank {
-    width: 50px;
+    width: 70px;
 }
 
 .item-image {
