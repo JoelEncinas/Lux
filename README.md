@@ -23,6 +23,16 @@
 - **Python**
 
   - *Web scrapping*
+  
+## 📷 App screenshots
+<img src="https://github.com/JoelEncinas/Lux/blob/main/demo_imgs/demo1.PNG" alt="demo" width="400">
+<img src="https://github.com/JoelEncinas/Lux/blob/main/demo_imgs/demo2.PNG" alt="demo" width="400">
+<img src="https://github.com/JoelEncinas/Lux/blob/main/demo_imgs/demo3.PNG" alt="demo" width="400">
+<img src="https://github.com/JoelEncinas/Lux/blob/main/demo_imgs/demo4.PNG" alt="demo" width="400">
+<img src="https://github.com/JoelEncinas/Lux/blob/main/demo_imgs/demo5.PNG" alt="demo" width="400">
+<img src="https://github.com/JoelEncinas/Lux/blob/main/demo_imgs/demo6.PNG" alt="demo" width="400">
+<img src="https://github.com/JoelEncinas/Lux/blob/main/demo_imgs/demo7.PNG" alt="demo" width="400">
+
 
 ## 💿 Test the app locally
 
