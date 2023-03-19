@@ -26,7 +26,7 @@
 
 ## 💿 Test the app locally
 
-Replace the RIOT_API variable at `./.env` with your api key. You can get one at [riot page](https://developer.riotgames.com/).  
+Replace the RIOT_API variable at `.env` with your api key. You can get one at [riot page](https://developer.riotgames.com/).  
 In the project directory, you can run:
 
 - `npm install`
