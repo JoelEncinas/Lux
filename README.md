@@ -1,7 +1,7 @@
 
 
 # 🌈 Lux
-<img src="https://img.shields.io/badge/-react-lightblue" alt="react" style="max-width: 100%;"> <img src="https://img.shields.io/badge/-axios-white" alt="axios" style="max-width: 100%;"> <img src="https://img.shields.io/badge/-bootstrap-purple" alt="bootstrap" style="max-width: 100%;"> <img src="https://img.shields.io/badge/-python-blue" alt="python" style="max-width: 100%;"> 
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react" style="max-width: 100%;"> <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="bootstrap" style="max-width: 100%;"> <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="python" style="max-width: 100%;"> 
 
  Search for League of Legends summoner profiles for stats, scores, KDA, win rate and more with Lux
 
